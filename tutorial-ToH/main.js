@@ -41,7 +41,7 @@ module.exports = "h1 {\r\n  text-align: center;\r\n}\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h1>\n    {{ title }}\n  </h1>\n  <h2>\n    {{subtitle}}\n  </h2>\n</div>"
+module.exports = "<div>\n  <h1>\n    {{ title }}\n  </h1>\n  <h2>\n    {{ subtitle }}\n  </h2>\n</div>\n<div>\n  <app-heroes></app-heroes>\n</div>"
 
 /***/ }),
 
@@ -94,7 +94,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _heroes_heroes_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./heroes/heroes.component */ "./src/app/heroes/heroes.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -104,22 +106,87 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]
-            ],
-            imports: [
-                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"]
-            ],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], _heroes_heroes_component__WEBPACK_IMPORTED_MODULE_4__["HeroesComponent"]],
+            imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"]],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/heroes/heroes.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/heroes/heroes.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "div li {\r\n  text-decoration: none;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/heroes/heroes.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/heroes/heroes.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h2>Detalles de {{hero.name | uppercase}}</h2>\n<div><span>Id: </span>{{hero.id}}</div>\n<div>\n  <label>Nombre:\n    <input [(ngModel)]=\"hero.name\" placeholder=\"Nombre\">\n  </label>\n</div>\n<div>\n  <span>Habilidades: </span>\n  <li *ngFor=\"let habs of hero.habilities; let i = index\">\n    {{i + 1}} {{habs}}\n  </li>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/heroes/heroes.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/heroes/heroes.component.ts ***!
+  \********************************************/
+/*! exports provided: HeroesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeroesComponent", function() { return HeroesComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HeroesComponent = /** @class */ (function () {
+    function HeroesComponent() {
+        this.hero = {
+            id: 1,
+            name: "Annie",
+            habilities: ["Tibbers!", "Bola de fuego"]
+        };
+    }
+    HeroesComponent.prototype.ngOnInit = function () { };
+    HeroesComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-heroes",
+            template: __webpack_require__(/*! ./heroes.component.html */ "./src/app/heroes/heroes.component.html"),
+            styles: [__webpack_require__(/*! ./heroes.component.css */ "./src/app/heroes/heroes.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HeroesComponent);
+    return HeroesComponent;
 }());
 
 
